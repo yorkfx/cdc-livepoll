@@ -26,17 +26,10 @@
     color: #333;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3)
   }
   
   header {
     text-align: center;
-  }
-  
-  header .logo {
-    position: relative;
-    margin: 100px auto 20px;
-    width: 250px;
   }
   
   h1 {
@@ -89,6 +82,40 @@
     position: relative;
     text-align: center;
   }
+
+  #contenedor{
+    height: 50px;
+    width: 97%;
+    margin: 0 auto;
+  }
+  #contenedor div{
+    display: inline-block;
+    vertical-align: top;
+    height: 50px;
+    background-color: black;
+    width: 49.8%;
+ 
+  }
+  #valor1{
+    float: right;
+    height: 50px; 
+    border-radius: 20px 0 0 20px;
+    border:2px solid black;
+    }
+  #valor2{
+    float: left;
+    height: 50px; 
+    border-radius: 0 20px 20px 0;
+    border:2px solid black;
+    }
+
+    p{
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+    }
   </style>
 </head>
 
@@ -96,18 +123,26 @@
   <header>
     <h1>Facebook Live Poll (Demo) </h1>
   </header>
+  <div id="contenedor">  
+    <div>
+      <div id="valor1" style="background-color: #2674e5"></div>
+    </div>
+    <div>
+      <div id="valor2" style="background-color: #FFD954"></div>
+    </div>
+  </div>
+  
   <div class="tc wf likes" style="background-image: url('');"><img class="emoji" src="emojis/like.png"><span class="counter"></span></div>
-  <div class="tc wf happy" style="background-image: url('');"><img class="emoji" src="emojis/love.png"><span class="counter"></span></div>
-  <div class="tc wf sad" style="background-image: url('');"><img class="emoji" src="emojis/sad.png"><span class="counter"></span></div>
   <div class="tc wf fml" style="background-image: url('');"><img class="emoji" src="emojis/haha.png"><span class="counter"></span></div>
-  <div class="tc wf angry" style="background-image: url('');"><img class="emoji" src="emojis/angry.png"><span class="counter"></span></div>
-  <div class="tc wf shock" style="background-image: url('');"><img class="emoji" src="emojis/shock.png"><span class="counter"></span></div>
+  
+  <p>votos totales <span id="votosTotales"></span></p>
+
   <script src="jquery.min.js"></script>
   <script src="lodash.min.js"></script>
   <script>
   "use strict";
   var access_token = '627471700756980|cfjwzo9_Wx_y1XVR2Z7db5ndoaY'; // FACEBOOK ACCESS TOKEN
-  var postID = '908826129251350'; // POST ID 
+  var postID = '905228679611095'; // POST ID 
   var refreshTime = 1;
   var defaultCount = 0;
 
@@ -121,7 +156,12 @@
     v3 = $('.sad .counter'),
     v4 = $('.fml .counter'),
     v5 = $('.angry .counter'),
-    v6 = $('.shock .counter');
+    v6 = $('.shock .counter'),
+
+    valor1 = $('#valor1'),
+    valor2 = $('#valor2'),
+    votosTotales = $('#votosTotales');
+
 
   function refreshCounts() {
     var url = 'https://graph.facebook.com/v2.8/?ids=' + postID + '&fields=' + reactions + '&access_token=' + access_token;
@@ -132,12 +172,20 @@
       v4.text(defaultCount + res[postID].reactions_haha.summary.total_count);
       v5.text(defaultCount + res[postID].reactions_angry.summary.total_count);
       v6.text(defaultCount + res[postID].reactions_wow.summary.total_count);
+
+      votosTotales.text(res[postID].reactions_haha.summary.total_count  + res[postID].reactions_like.summary.total_count);
+
+      valor1.width(defaultCount + res[postID].reactions_like.summary.total_count/(res[postID].reactions_haha.summary.total_count  + res[postID].reactions_like.summary.total_count)*100 + '%');
+      valor2.width(defaultCount + res[postID].reactions_haha.summary.total_count/(res[postID].reactions_haha.summary.total_count  + res[postID].reactions_like.summary.total_count)*100 + '%');
+
     });
   }
 
   $(document).ready(function() {
     setInterval(refreshCounts, refreshTime * 1000);
     refreshCounts();
+
+
   });
   </script>
 </body>
