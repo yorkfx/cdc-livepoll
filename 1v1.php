@@ -109,7 +109,24 @@
     border-radius: 0 20px 20px 0;
     border:2px solid black;
     }
-
+#valor1 img{
+  width: 13%;
+  height: auto;
+  top:-8px;
+  position: relative;
+  border:2px solid white;
+  border-radius: 30px;
+}
+#valor2 img{
+  width: 22%;
+  height: auto;
+  top:-8px;
+  right: 0;
+  float: right;
+  position: relative;
+  border:2px solid white;
+  border-radius: 30px;
+}
     p{
     font-size: 2.2rem;
     color: #fff;
@@ -126,10 +143,10 @@
   </header>
   <div id="contenedor_barras">  
     <div>
-      <div id="valor1" style="background-color: #2674e5"></div>
+      <div id="valor1" style="background-color: #2674e5"><img class="emoji" src="emojis/like.png"></div>
     </div>
     <div>
-      <div id="valor2" style="background-color: #FFD954"></div>
+      <div id="valor2" style="background-color: #FFD954"><img class="emoji" src="emojis/haha.png"></div>
     </div>
   </div>
   
