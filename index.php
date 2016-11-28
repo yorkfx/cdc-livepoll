@@ -81,7 +81,7 @@
   }
   
   .wf {
-    width: 47%;
+    width: 46.5%;
     float: left;
     margin: 4px 1.5%;
     height: 160px;

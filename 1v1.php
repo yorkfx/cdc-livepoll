@@ -111,7 +111,7 @@
     }
 
     p{
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #fff;
     text-align: center;
     font-weight: 700;
