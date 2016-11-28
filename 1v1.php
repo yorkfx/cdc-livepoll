@@ -31,7 +31,7 @@
   header {
     text-align: center;
   }
-  
+
   h1 {
     text-align: center;
     width: 100%;
@@ -83,28 +83,29 @@
     text-align: center;
   }
 
-  #contenedor{
-    height: 50px;
+  #contenedor_barras{
+    height: 40px;
     width: 97%;
     margin: 0 auto;
+    background-color: black;
   }
-  #contenedor div{
+  #contenedor_barras div{
     display: inline-block;
     vertical-align: top;
-    height: 50px;
+    height: 40px;
     background-color: black;
     width: 49.8%;
  
   }
   #valor1{
     float: right;
-    height: 50px; 
+    height: 40px; 
     border-radius: 20px 0 0 20px;
     border:2px solid black;
     }
   #valor2{
     float: left;
-    height: 50px; 
+    height: 40px; 
     border-radius: 0 20px 20px 0;
     border:2px solid black;
     }
@@ -123,7 +124,7 @@
   <header>
     <h1>Facebook Live Poll (Demo) </h1>
   </header>
-  <div id="contenedor">  
+  <div id="contenedor_barras">  
     <div>
       <div id="valor1" style="background-color: #2674e5"></div>
     </div>
@@ -142,7 +143,7 @@
   <script>
   "use strict";
   var access_token = '627471700756980|cfjwzo9_Wx_y1XVR2Z7db5ndoaY'; // FACEBOOK ACCESS TOKEN
-  var postID = '905228679611095'; // POST ID 
+  var postID = '1372041502830544'; // POST ID 
   var refreshTime = 1;
   var defaultCount = 0;
 
